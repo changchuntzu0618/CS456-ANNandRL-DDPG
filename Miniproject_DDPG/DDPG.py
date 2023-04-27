@@ -75,6 +75,7 @@ plt.title('Average Reward with differnt Fixed Torque (HeuristicPendulumAgent)')
 plt.xticks(list_fix_torque)
 plt.show()
 
+# draw plot
 list_average_reward_HeuristicAgent=[]
 total_episodes_reward_HeuristicAgent = 0
 for episode in range(num_episode):
