@@ -47,6 +47,7 @@ def DoEpisode(env,agent,agent_name='RandomAgent',fix_torque=0.1,num_state=200) :
     total_reward_per_episode=0
     for _ in range(num_state):
         observation, info, total_reward_per_episode=DoState(env,agent,observation,total_reward_per_episode,agent_name,fix_torque)
+        # print("total_reward_per_episode:",total_reward_per_episode)
     return total_reward_per_episode
 
 
@@ -58,8 +59,8 @@ num_episode=10
 list_last_average_reward=[]
 list_fix_torque=np.linspace(0.1, 2.0, num=20)
 print(list_fix_torque)
-total_episodes_reward_HeuristicAgent = 0
 for fix_torque in list_fix_torque:
+    total_episodes_reward_HeuristicAgent=0
     for episode in range(num_episode):
         agent = HeuristicPendulumAgent(env)
         total_reward_per_episode=DoEpisode(env,agent,agent.get_agent_name(),fix_torque)
@@ -70,7 +71,7 @@ for fix_torque in list_fix_torque:
     list_last_average_reward.append(average_reward)
 plt.plot(list_fix_torque,list_last_average_reward,'-o')
 plt.xlabel("Fix Torque")
-plt.ylabel("Average Reward")
+plt.ylabel("Average Reward (10 episodes)")
 plt.title('Average Reward with differnt Fixed Torque (HeuristicPendulumAgent)')
 plt.xticks(list_fix_torque)
 plt.show()
