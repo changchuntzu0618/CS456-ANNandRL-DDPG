@@ -397,6 +397,7 @@ def seven_different_theta():
         print('actor_target Model save to ',save_path_actor_target_OUActionNoise,' !')
 
         list_number_episodes = np.linspace(1,num_episode,num = num_episode)
+        plt.figure()
         plt.plot(list_number_episodes,list_average_loss_critic_network, label='Critic Network using OUActionNoise')
         plt.plot(list_number_episodes,list_average_loss_actor_network, label='Actor Network using OUActionNoise')
         plt.xlabel('Number of episodes')
@@ -406,7 +407,8 @@ def seven_different_theta():
         print('Save the figures...')
         image_path=os.path.join('figure','7_AverageLoss_OUActionNoise_'+datetime.datetime.now().strftime("%Y%m%d%H%M")+'_ep'+str(num_episode)+'_tau'+str(tau)+'_theta'+str(theta)+'.png')
         plt.savefig(image_path)
-        plt.show()
+        # plt.show()
+
         plt.figure()
         plt.plot(list_number_episodes,list_reward)
         plt.xlabel('Number of episodes')
@@ -415,7 +417,7 @@ def seven_different_theta():
         print('Save the figures...')
         image_path=os.path.join('figure','7_AccumulatedRewardPerEpisode__OUActionNoise_'+datetime.datetime.now().strftime("%Y%m%d%H%M")+'_ep'+str(num_episode)+'_tau'+str(tau)+'_theta'+str(theta)+'.png')
         plt.savefig(image_path)
-        plt.show()
+        # plt.show()
     env.close()
 
 if __name__ == "__main__":
