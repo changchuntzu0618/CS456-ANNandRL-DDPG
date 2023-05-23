@@ -2,7 +2,6 @@ import gym
 from helpers import NormalizedEnv, RandomAgent
 import numpy as np
 import matplotlib.pyplot as plt
-import random
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -11,6 +10,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from pylab import*
 import os
 from tqdm import tqdm
+import random as rand
 
 # Implement a heuristic policy
 class HeuristicPendulumAgent():
@@ -84,7 +84,7 @@ class ReplayBuffer():
         
         # sample batch_size transitions from the replay buffer randomly
         # return random.sample(self.total_transition, batch_size)
-        random_index = random.sample(range(0, self.amount), batch_size)
+        random_index = rand.sample(range(0, self.amount), batch_size)
         # assert np.sum(np.array(random_index)>self.amount)==0, "random_index should be less than 'self.amount'"
         # print('amount:',self.amount)
         # print('random_index:',random_index)
@@ -302,7 +302,7 @@ class DDPGAgent():
 def seven_different_theta():
     # training the policies using one Tau = 0.01, theta between 0 and 1
     env = gym.make("Pendulum-v1")
-    num_episode=2 #1000
+    num_episode=1000
     num_step=200
     batch_size=128
     buffer_size=100000
